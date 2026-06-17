@@ -47,6 +47,21 @@ Predicts frame similarities and continuously pools representations around detect
 ### Split Module (`split.py`)
 Acts as length-grower and interweaver logic. Projects encoded embeddings via expanded intermediary limits, then strictly concatenates outputs back interleaving with source vectors to logically double output emission capability length bounds efficiently.
 
+## Citation
+
+If you find these modules useful in your research, please consider citing our paper:
+
+```bibtex
+@inproceedings{fang2026split,
+  title={UMA-Split: unimodal aggregation for both English and Mandarin non-autoregressive speech recognition},
+  author={Fang, Ying and Li, Xiaofei},
+  booktitle={ICASSP 2026-2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={18302--18306},
+  year={2026},
+  organization={IEEE}
+}
+```
+
 ## License
 
 MIT License.
