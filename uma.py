@@ -93,11 +93,14 @@ class UMA(nn.Module):
         mask[:, -1] = True
         valley_index_end = mask.nonzero()[:, 1] + 2 
         
-        # Clip max boundaries to sequence length
+        # Clip max boundaries to each sample's length (use per-sample ilens)
+        # `batch_index` maps each valley to its sample in the batch
+        ilens_device = ilens.to(valley_index_end.device)
+        max_len_per_valley = ilens_device[batch_index]
         valley_index_end = torch.where(
-            valley_index_end > length * torch.ones_like(valley_index_end), 
-            length * torch.ones_like(valley_index_end), 
-            valley_index_end
+            valley_index_end > max_len_per_valley,
+            max_len_per_valley,
+            valley_index_end,
         )
 
         _, counts = torch.unique(batch_index, return_counts=True) # Number of valleys in each sample
